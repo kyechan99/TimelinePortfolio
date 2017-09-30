@@ -6,7 +6,7 @@ if (isset($tp_type) == false) {
     $tp_type = "최신";
 }
 
-echo "<div class='w3-card-4 w3-margin w3-white" . " animated bounceInRight " . "'>" .
+echo "<div class='w3-card-4 w3-margin w3-white animated bounceInRight'>" .
                             "<img src='https://pexels.imgix.net/photos/7919/pexels-photo.jpg' alt='Nature' style='width:100%'>" .
                             "<hr class='style15'>" .
                             "<div class='w3-container'>" .

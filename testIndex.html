@@ -45,13 +45,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">@kyechan99</a>
+            <a class="navbar-brand" href="">@kyechan99</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <!-- Navbar 좌측 상단 -->
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">타임라인 <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="">타임라인 <span class="sr-only">(current)</span></a></li>
             </ul>
 
             <!-- 검색 창 -->
@@ -199,20 +199,17 @@
 
                         <!-- 작성 란 -->
                         <div v-show="isWriting === true">
-                                <textarea class="form-control" id="exampleTextarea"
-                                          style="border:none; height:150px; resize:none;" placeholder="내용"></textarea>
-                            <a v-on:click="wantWrite" class="btn btn-sm btn-danger pull-left"
-                               style="margin-left: 10px;">
+                            <textarea class="form-control" id="name" style="border:none; height:35px; resize:none;" placeholder="이름"></textarea>
+                            <textarea class="form-control" id="content" style="border:none; height:150px; resize:none;" placeholder="내용"></textarea>
+                            <a v-on:click="wantWrite" class="btn btn-sm btn-danger pull-left" style="margin-left: 10px;">
                                 닫기
                             </a>
-                            <button class="btn btn-info pull-right" type="submit" style="margin-right: 10px;">완료
-                            </button>
+                            <button class="btn btn-info pull-right" type="submit" style="margin-right: 10px;">완료 </button>
                         </div>
                         <br/>
                         <div v-show="isWriting === false">
                             <a v-on:click="wantWrite" class="btn btn-default" style="margin-left: 10px;">
-                                <img src="https://www.phplist.org/wp-content/uploads/2014/02/write-black.png"
-                                     width="20"/> 작성
+                                <img src="https://www.phplist.org/wp-content/uploads/2014/02/write-black.png" width="20"/> 작성
                             </a>
                         </div>
                     </div>
