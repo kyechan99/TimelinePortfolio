@@ -1,3 +1,11 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'].'/preset.php';
+
+if (isset($tp_type) == false) {
+    $tp_type = "최신"
+}
+?>
+
 <!doctype html>
 <html lang="ko">
 <head>
