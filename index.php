@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/preset.php';
 
 if (isset($tp_type) == false) {
-    $tp_type = "최신"
+    $tp_type = "최신";
 }
 ?>
 
@@ -174,7 +174,7 @@ if (isset($tp_type) == false) {
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#">최신순</a>
+                                <a class="nav-link active" href="?tp_type=최신">최신순</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="?tp_type=게임">게임</a>
@@ -438,48 +438,20 @@ if (isset($tp_type) == false) {
         $(document).endlessScroll({
             inflowPixels: 300,
             callback: function () {
-                var anim = " animated bounceInRight ";
-                if (isMobile.any())
-                    anim = " ";
-                var form_data = {
-                    page: 0
-                };
-                $.ajax({
-                    type: "GET",
-                    url: "/board/list/0",
-                    data: form_data,
-                    success: function (response) {
-                        alert(response);
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        $('#timeline_col').append(this.responseText);
                     }
-                });
-                var $img = $('#images li:nth-last-child(5)').clone();
-                $('#timeline_col').append(
-                    "<div class='w3-card-4 w3-margin w3-white" + anim + "'>" +
-                    "<img src='https://pexels.imgix.net/photos/7919/pexels-photo.jpg' alt='Nature' style='width:100%'>" +
-                    "<hr class='style15'>" +
-                    "<div class='w3-container'>" +
-                    "<h3><b>제목</b></h3>" +
-                    "<h5><b>@</b>(님)이 작성, <span class='w3-opacity'>3분전에 작성</span></h5>" +
-                    "</div>" +
-
-                    "<div class='w3-container'>" +
-                    "<p> 내용 </p>" +
-                    "<div class='w3-row'>" +
-                    "<div class='w3-col m8 s12'>" +
-                    "<a href='/#'>" +
-                    "<button class='w3-button w3-padding-large w3-white w3-border'><b>READ MORE »</b>" +
-                    "</button>" +
-                    "</a>" +
-                    "<p>" +
-                    "</p>" +
-                    "</div>" +
-                    "<div class='w3-col m4 w3-hide-small'>" +
-                    "<p><span class='w3-padding-large w3-right'><b>Comments  </b> <span class='w3-tag'>2</span></span></p>" +
-                    "</div>" +
-                    "</div>" +
-                    "</div>" +
-                    "</div><hr>"
-                );
+                };
+                var url = new URL(window.location);
+                var tt = url.searchParams.get("tp_type");
+                if (tt == null) {
+                        tt = '최신';
+                    }
+                xmlhttp.open("GET", "getPost.php?tp_type=" + tt, true);
+                xmlhttp.send();
+                
             }
         });
     });
