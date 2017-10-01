@@ -6,9 +6,16 @@ if (isset($tp_idx) == false) {
     $tp_idx = 1;
 }
 
+// Post 글 불러오기
 $q = "SELECT * FROM TP_POST WHERE TP_IDX = '$tp_idx'";
 $result = $mysqli->query($q);
 $data = $result->fetch_array();
+
+
+// Post 댓글 불러오기
+$q2 = "SELECT * FROM TP_COMMENT WHERE TP_POST_IDX = '$tp_idx'";
+$result2 = $mysqli->query($q2);
+
 
 ?>
 
@@ -37,7 +44,7 @@ $data = $result->fetch_array();
                     <p>
                         <span class='w3-padding-large w3-right'>
                         <b>Comments  </b>
-                        <span class='w3-tag'>3</span>
+                        <span class='w3-tag'><? echo $result2->num_rows; ?></span>
                         </span>
                     </p>
                 </div>
@@ -47,12 +54,20 @@ $data = $result->fetch_array();
                 <hr/>
                 
                 <div>
-                    <p><b class='w3-tag'>asdf1234</b> 우왓 쩔어요 !!</p>
-                    <p><b class='w3-tag'>test54</b> ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ !!</p>
-                    <p><b class='w3-tag'>강예찬</b> <b>@asdf1234</b> 감사합니다 ㅎㅎ</p>
-                    <hr/>
-                </div>
+                    <?
+                    if ($result2->num_rows == 0)
+                        echo " 댓글이 없습니다.";
+                    else
+                    {
+                        while ($data2 = $result2->fetch_array())
+                        {
+                            echo "<p><b class='w3-tag'>" . $data2['TP_NAME'] . "</b>" . $data2['TP_CONTENT'] . "</p>";
+                        }
+                    }
+                    ?>
+                </div><!-- 댓글 란 -->
                 
+                <hr/>
                 
                 <form action='/' method='post' style="margin-top: -18px;">                    
                     <textarea class='form-control' style='border:none; resize:none; height:35px;' placeholder='이름'></textarea>
