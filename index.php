@@ -266,35 +266,42 @@ if (isset($tp_type) == false) {
     })(jQuery);
     
     var postIdx = 1000;
+    
+    function ajaxCall() {
+        var anim = " animated bounceInRight ";
+        if (isMobile.any()) anim = " ";
 
+        var url = new URL(window.location);
+        var tt = url.searchParams.get("tp_type");
+        if (tt == null) tt = '최신';
+
+        var form_data = {
+            tp_type: tt,
+            tp_idx: postIdx
+        };
+
+        $.ajax({
+            type: "GET",
+            url: "/getPost.php",
+            data: form_data,
+            success: function (response) {
+                var obj = JSON.parse(response);
+                $('#timeline_col').append("<div class='w3-card-4 w3-margin w3-white" + anim + "'>" + obj.card + "</div><hr>");
+                postIdx = obj.idx;
+            }
+        });
+    }
+    
     // 스크롤 맨 마지막일때 호출됨
     $(document).ready(function () {
+        ajaxCall();
+        setTimeout(function() { ajaxCall(); }, 1500);
+        setTimeout(function() { ajaxCall(); }, 3000);
+        
         $(document).endlessScroll({
             inflowPixels: 300,
             callback: function () {
-                var anim = " animated bounceInRight ";
-                if (isMobile.any()) anim = " ";
-                                
-                var url = new URL(window.location);
-                var tt = url.searchParams.get("tp_type");
-                if (tt == null) tt = '최신';
-                
-                var form_data = {
-                    tp_type: tt,
-                    tp_idx: postIdx
-                };
-                
-                $.ajax({
-                    type: "GET",
-                    url: "/getPost.php",
-                    data: form_data,
-                    success: function (response) {
-                        var obj = JSON.parse(response);
-                        $('#timeline_col').append("<div class='w3-card-4 w3-margin w3-white" + anim + "'>" + obj.card + "</div><hr>");
-                        postIdx = obj.idx;
-                    }
-                });
-                
+                ajaxCall();
             }
         });
     });
