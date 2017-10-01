@@ -105,15 +105,15 @@ if (isset($tp_type) == false) {
 
     <div class="w3-card-4 w3-margin w3-white">
         <hr>
-        <form id="myboard" name="myboard" action="#">
+        <form id="myboard" method = "POST" name="myboard" action="writePost.php">
             <div class="form-group">
                 <h6 for="exampleTextarea"> &nbsp;&nbsp; 글 남기기..</h6>
 
                 <!-- 작성 란 -->
                 <div v-show="isWriting === true">
-                    <textarea class="form-control" id="name" style="border:none; height:35px; resize:none;" placeholder="이름"></textarea>
-                    <textarea class="form-control" id="title" style="border:none; height:35px; resize:none;" placeholder="제목"></textarea>
-                    <textarea class="form-control" id="content" style="border:none; height:120px; resize:none;" placeholder="내용"></textarea>
+                    <textarea class="form-control" id="t_name" name="t_name" style="border:none; height:35px; resize:none;" placeholder="이름"></textarea>
+                    <textarea class="form-control" id="t_title" name="t_title" style="border:none; height:35px; resize:none;" placeholder="제목"></textarea>
+                    <textarea class="form-control" id="t_content" name="t_content" style="border:none; height:120px; resize:none;" placeholder="내용"></textarea>
                     <a v-on:click="wantWrite" class="btn btn-sm btn-danger pull-left" style="margin-left: 10px;">
                         닫기
                     </a>
@@ -129,69 +129,13 @@ if (isset($tp_type) == false) {
         </form>
         <hr>
     </div> <!-- w3-card-4 글 작성 부분 -->
-
-    <hr>
-
-    <div class='w3-card-4 w3-margin w3-white animated lightSpeedIn'>
-        <hr class='style13'>
-        <div class='w3-container'>
-            <h3><b>안녕하세요 !!</b></h3>
-            <h5><b>@익명</b>(님)이 작성, <span class='w3-opacity'>2017-09-30</span></h5>
-        </div><!-- w3-container 포스트 상단 제목 부분 -->
-        <div class='w3-container' id="wrapper">
-            <p>ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ</p>
-            <div class='w3-row'>
-                <div class='w3-col m8 s12'>
-                    <a href='/#'>
-                        <button class='w3-button w3-padding-large w3-white w3-border'><b>READ MORE »</b>
-                        </button>
-                    </a>
-                    <p></p>
-                </div>
-                <div class='w3-col m4 w3-hide-small'>
-                    <p>
-                        <span class='w3-padding-large w3-right'>
-                        <b>Comments  </b>
-                        <span class='w3-tag'>2</span>
-                        </span>
-                    </p>
-                </div>
-            </div>
-        </div><!-- w3-container 포스트 하단 설명 부분 -->
-    </div><!-- 포스트 w3-card-4 -->
-
-    <hr>
-
-    <div class='w3-card-4 w3-margin w3-white animated lightSpeedIn'>
-        <img src='https://pexels.imgix.net/photos/7919/pexels-photo.jpg' alt='Nature' style='width:100%'>
-        <hr class='style13'>
-        <div class='w3-container'>
-            <h3><b>[공지사항] 학교 사이트 첫 개막</b></h3>
-            <h5>@강예찬(님)이 작성, <span class='w3-opacity'>2017-09-30</span></h5>
-        </div><!-- w3-container 포스트 상단 제목 부분 -->
-        <div class='w3-container' id="wrapper">
-            <p>학교 커뮤니티 사이트 - KGSH Community 의 첫 모습을 여러분께 보여 드립니다 !</p>
-            <div class='w3-row'>
-                <div class='w3-col m8 s12'>
-                    <a href='/post?tp_idx='>
-                        <button class='w3-button w3-padding-large w3-white w3-border'><b>READ MORE »</b>
-                        </button>
-                    </a>
-                    <p></p>
-                </div>
-                <div class='w3-col m4 w3-hide-small'>
-                    <p>
-                        <span class='w3-padding-large w3-right'>
-                        <b>Comments  </b>
-                        <span class='w3-tag'>2</span>
-                        </span>
-                    </p>
-                    &nbsp;
-                </div>
-            </div>
-        </div><!-- w3-container 포스트 하단 설명 부분 -->
-    </div><!-- 포스트 w3-card-4 -->
-
+    
+    <!-- 이 부분에 타임라인 카드가 생성됨 -->
+    <!-- 이 부분에 타임라인 카드가 생성됨 -->
+    <!-- 이 부분에 타임라인 카드가 생성됨 -->
+    <!-- 이 부분에 타임라인 카드가 생성됨 -->
+    <!-- 이 부분에 타임라인 카드가 생성됨 -->
+    
     <hr>
 </div><!-- 좌측 메뉴 -->
 
@@ -321,7 +265,7 @@ if (isset($tp_type) == false) {
         };
     })(jQuery);
     
-    var postIdx = 0;
+    var postIdx = 1000;
 
     // 스크롤 맨 마지막일때 호출됨
     $(document).ready(function () {
