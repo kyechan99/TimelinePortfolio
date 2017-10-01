@@ -20,8 +20,14 @@ if ($tp_type != "최신") {
 $result = $mysqli->query($q);
 if ($result->num_rows >= 1)
 {
+    
     $data = $result->fetch_array();
     $arr['idx'] = $data['TP_IDX'];
+    $temp = $arr['idx'];
+    
+    $q2 = "SELECT * FROM TP_COMMENT WHERE TP_POST_IDX = '$temp' ";
+    $result2 = $mysqli->query($q2);
+    
     if ($data['TP_TYPE'] != "방문록")
         $arr['card'] =  "<img src='" . $data['TP_THUMBNAIL'] . "' alt=' Thumbnail : null' style='width:100%'>" .
                         "<hr class='style13' style='margin-top: 7px'>" .
@@ -40,7 +46,7 @@ if ($result->num_rows >= 1)
                         "</p>" .
                         "</div>" .
                         "<div class='w3-col m4 w3-hide-small'>" .
-                        "<p><span class='w3-padding-large w3-right'><b>Comments  </b> <span class='w3-tag'>2</span></span></p>" .
+                        "<p><span class='w3-padding-large w3-right'><b>Comments  </b> <span class='w3-tag'>" . $result2->num_rows . "</span></span></p>" .
                         "</div>" .
                         "</div>" .
                         "</div>";
@@ -62,7 +68,7 @@ if ($result->num_rows >= 1)
                         "</p>" .
                         "</div>" .
                         "<div class='w3-col m4 w3-hide-small'>" .
-                        "<p><span class='w3-padding-large w3-right'><b>Comments  </b> <span class='w3-tag'>2</span></span></p>" .
+                        "<p><span class='w3-padding-large w3-right'><b>Comments  </b> <span class='w3-tag'>" . $result2->num_rows . "</span></span></p>" .
                         "</div>" .
                         "</div>" .
                         "</div>";
