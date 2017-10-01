@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `TP_COMMENT` (
 ) ENGINE = MyISAM DEFAULT CHARSET = utf8 AUTO_INCREMENT = 1;
 
 
-INSERT INTO `TP_COMMENT`(`TP_POST_IDX`, `TP_NAME`, `TP_CONTENT`, `TP_DATE`) VALUES ('3', 'asdf1234', '오오옹', '2017-05-31 18:46:32')
+INSERT INTO `TP_COMMENT`(`TP_POST_IDX`, `TP_NAME`, `TP_CONTENT`, `TP_DATE`) VALUES ('3', 'asdf1234', '오오옹', date("Y-m-d H:i:s"))
 
 INSERT INTO `TP_POST`(`TP_TYPE`, `TP_THUMBNAIL`, `TP_TITLE`, `TP_CONTENT`, `TP_DATE`) VALUES ('게임', 'https://lh3.googleusercontent.com/gd4sAGgkpi2BZ9RC9qYrjAFlwQxadPQZkih_hWjBX8TUxrQ67B2fYsDPznXJ44UiYd0=h900-rw', 'Shape', '<h2 id="">특징</h2>
             <ul>
@@ -70,4 +70,4 @@ INSERT INTO `TP_POST`(`TP_TYPE`, `TP_THUMBNAIL`, `TP_TITLE`, `TP_CONTENT`, `TP_D
                 <li>영상 주소 : <a href="http://blog.naver.com/kyechan99/220406377159">바로가기</a></li>
             </ul>', '2017-05-31 18:46:32')
 
-INSERT INTO `TP_POST`(`TP_TYPE`, `TP_THUMBNAIL`, `TP_TITLE`, `TP_CONTENT`, `TP_DATE`) VALUES ('방문록', '김익명', '반갑습니다 !', '반갑습니다 !!!!!!!!!!!!!!!', '2017-05-31 18:46:32')
+INSERT INTO `TP_POST`(`TP_TYPE`, `TP_THUMBNAIL`, `TP_TITLE`, `TP_CONTENT`, `TP_DATE`) VALUES ('방문록', '김익명', '반갑습니다 !', '반갑습니다 !!!!!!!!!!!!!!!', date("Y-m-d H:i:s"))
