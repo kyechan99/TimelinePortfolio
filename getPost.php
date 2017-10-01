@@ -32,7 +32,7 @@ if ($result->num_rows >= 1)
                         "<div class='w3-container'>" .
                         "<div class='w3-row'>" .
                         "<div class='w3-col m8 s12'>" .
-                        "<a href='/post?tp_idx=" . $data['TP_IDX'] . "'>" .
+                        "<a href='/post?tp_idx=" . $data['TP_IDX'] . "&tp_type=" . $data['TP_TYPE'] . "'>" .
                         "<button class='w3-button w3-padding-large w3-white w3-border'><b>READ MORE »</b>" .
                         "</button>" .
                         "</a>" .
@@ -54,7 +54,7 @@ if ($result->num_rows >= 1)
                         "<p>". $data['TP_CONTENT'] . "</p>" .
                         "<div class='w3-row'>" .
                         "<div class='w3-col m8 s12'>" .
-                        "<a href='/post?tp_idx=" . $data['TP_IDX'] . "'>" .
+                        "<a href='/post?tp_idx=" . $data['TP_IDX'] . "&tp_type=" . $data['TP_TYPE'] . "'>" .
                         "<button class='w3-button w3-padding-large w3-white w3-border'><b>READ MORE »</b>" .
                         "</button>" .
                         "</a>" .

@@ -21,11 +21,11 @@ $data = $result->fetch_array();
 
 
 <div class='w3-card-4 w3-margin w3-white animated lightSpeedIn'>
-        <img src=<? echo $data['TP_THUMBNAIL']; ?> alt='Nature' style='width:100%'>
+        <? if ($tp_type != "방문록") echo "<img src=".$data['TP_THUMBNAIL']." alt='Nature' style='width:100%'>"; ?>
         <hr class='style13' style="margin-top: -8px">
         <div class='w3-container'>            
             <h2><b><? echo $data['TP_TITLE']; ?></b></h2>
-            <h4><b>@강예찬</b>(님)이 작성, <span class='w3-opacity'><? echo $data['TP_DATE']; ?></span></h4>
+            <h4><b><? if ($tp_type == "방문록") echo "@".$data['TP_THUMBNAIL']; else echo "@강예찬"; ?></b>(님)이 작성, <span class='w3-opacity'><? echo $data['TP_DATE']; ?></span></h4>
             &nbsp;
         </div><!-- w3-container 포스트 상단 제목 부분 -->
         <div class='w3-container' id="wrapper">
