@@ -112,7 +112,8 @@ if (isset($tp_type) == false) {
                 <!-- 작성 란 -->
                 <div v-show="isWriting === true">
                     <textarea class="form-control" id="name" style="border:none; height:35px; resize:none;" placeholder="이름"></textarea>
-                    <textarea class="form-control" id="content" style="border:none; height:150px; resize:none;" placeholder="내용"></textarea>
+                    <textarea class="form-control" id="title" style="border:none; height:35px; resize:none;" placeholder="제목"></textarea>
+                    <textarea class="form-control" id="content" style="border:none; height:120px; resize:none;" placeholder="내용"></textarea>
                     <a v-on:click="wantWrite" class="btn btn-sm btn-danger pull-left" style="margin-left: 10px;">
                         닫기
                     </a>
@@ -155,11 +156,6 @@ if (isset($tp_type) == false) {
                         </span>
                     </p>
                 </div>
-
-                <form action='/' method='post'>
-                    <textarea class='form-control' style='border:none; resize:vertical;' placeholder='댓글 남기기'></textarea>
-                    <input  type='button' class='btn btn-link btn-sm pull-right' value='완료'>
-                </form><!-- 댓글 폼 -->
             </div>
         </div><!-- w3-container 포스트 하단 설명 부분 -->
     </div><!-- 포스트 w3-card-4 -->
@@ -177,7 +173,7 @@ if (isset($tp_type) == false) {
             <p>학교 커뮤니티 사이트 - KGSH Community 의 첫 모습을 여러분께 보여 드립니다 !</p>
             <div class='w3-row'>
                 <div class='w3-col m8 s12'>
-                    <a href='/#'>
+                    <a href='/post?tp_idx='>
                         <button class='w3-button w3-padding-large w3-white w3-border'><b>READ MORE »</b>
                         </button>
                     </a>
@@ -190,12 +186,8 @@ if (isset($tp_type) == false) {
                         <span class='w3-tag'>2</span>
                         </span>
                     </p>
+                    &nbsp;
                 </div>
-
-                <form action='/' method='post'>
-                    <textarea class='form-control' style='border:none; resize:vertical;' placeholder='댓글 남기기'></textarea>
-                    <input  type='button' class='btn btn-link btn-sm pull-right' value='완료'>
-                </form><!-- 댓글 폼 -->
             </div>
         </div><!-- w3-container 포스트 하단 설명 부분 -->
     </div><!-- 포스트 w3-card-4 -->
@@ -327,27 +319,37 @@ if (isset($tp_type) == false) {
                 });
             }
         };
-
     })(jQuery);
+    
+    var postIdx = 0;
 
     // 스크롤 맨 마지막일때 호출됨
     $(document).ready(function () {
         $(document).endlessScroll({
             inflowPixels: 300,
             callback: function () {
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        $('#timeline_col').append(this.responseText);
-                    }
-                };
+                var anim = " animated bounceInRight ";
+                if (isMobile.any()) anim = " ";
+                                
                 var url = new URL(window.location);
                 var tt = url.searchParams.get("tp_type");
-                if (tt == null) {
-                    tt = '최신';
-                }
-                xmlhttp.open("GET", "getPost.php?tp_type=" + tt, true);
-                xmlhttp.send();
+                if (tt == null) tt = '최신';
+                
+                var form_data = {
+                    tp_type: tt,
+                    tp_idx: postIdx
+                };
+                
+                $.ajax({
+                    type: "GET",
+                    url: "/getPost.php",
+                    data: form_data,
+                    success: function (response) {
+                        var obj = JSON.parse(response);
+                        $('#timeline_col').append("<div class='w3-card-4 w3-margin w3-white" + anim + "'>" + obj.card + "</div><hr>");
+                        postIdx = obj.idx;
+                    }
+                });
                 
             }
         });
