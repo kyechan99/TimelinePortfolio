@@ -1,2 +1,5 @@
 # config - db info
 /config.php
+
+# testpost - post.php test
+/testpost.html

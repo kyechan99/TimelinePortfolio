@@ -1,5 +1,4 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/preset.php';
 include $_SERVER['DOCUMENT_ROOT'].'/head.html';
 
 if (isset($tp_type) == false) {
@@ -10,13 +9,14 @@ if (isset($tp_type) == false) {
 
 <div class="w3-col l4">
     <div class="w3-card-2 w3-margin w3-margin-top">
-        <img class=" w3-hide-medium w3-hide-small"
+        <img class=" w3-medium w3-small"
              src="https://avatars0.githubusercontent.com/u/14146566?v=3&s=460" style="width:100%">
         <div class="w3-container w3-white">
             &nbsp;
             <h4><b>강예찬</b></h4>
-            <p>겁나 잘나고 못하는게 없는, 그냥 천재</p>
-            <p>나라의 보물</p>
+            <p>음.. 아직은 딱히 할말이 없네요.</p>
+            <p>현재는 이것저것 다양하게 공부하고 있습니다.</p>
+            <p>특히 서버에 관심이 많습니다.</p>
         </div>
     </div><!-- 개인 -->
 
@@ -24,33 +24,25 @@ if (isset($tp_type) == false) {
 
     <div class="w3-card-2 w3-margin">
         <div class="w3-container w3-padding">
-            <h4>Top Posts</h4>
+            <h4>My Career</h4>
         </div>
         <ul class="w3-ul w3-hoverable w3-white">
-            <li class="w3-padding-16  w3-hide-small" onclick="location.href='/#';">
-                <img src="https://avatars0.githubusercontent.com/u/14146566?v=3&s=460" alt="Image"
-                     class="w3-left w3-margin-right" style="width:50px">
-                <span class="w3-large">A</span><br>
-                <span>AAA</span>
+            <li class="w3-padding-16  w3-hide-small">
+                <span class="w3-large">한국게임과학고</span><br>
+                <span>2015.03 - 2018.03</span>
             </li>
-            <li class="w3-padding-16  w3-hide-small" onclick="location.href='/#;">
-                <img src="https://avatars0.githubusercontent.com/u/14146566?v=3&s=460" alt="Image"
-                     class="w3-left w3-margin-right" style="width:50px">
-                <span class="w3-large">B</span><br>
-                <span>BBBB</span>
+            <li class="w3-padding-16  w3-hide-small">
+                <span class="w3-large">대학</span><br>
+                <span>X</span>
             </li>
-            <li class="w3-padding-16  w3-hide-small" onclick="location.href='/#';">
-                <img src="https://avatars0.githubusercontent.com/u/14146566?v=3&s=460" alt="Image"
-                     class="w3-left w3-margin-right" style="width:50px">
+            <!--<li class="w3-padding-16  w3-hide-small">
                 <span class="w3-large">C</span><br>
                 <span>CCCC</span>
             </li>
-            <li class="w3-padding-16 w3-hide-medium w3-hide-small" onclick="location.href='/#';">
-                <img src="https://avatars0.githubusercontent.com/u/14146566?v=3&s=460" alt="Image"
-                     class="w3-left w3-margin-right" style="width:50px">
+            <li class="w3-padding-16 w3-hide-medium w3-hide-small">
                 <span class="w3-large">C</span><br>
                 <span>DDDD</span>
-            </li>
+            </li>-->
         </ul>
     </div><!-- Posts 창 -->
 
@@ -63,9 +55,10 @@ if (isset($tp_type) == false) {
         <div class="w3-container w3-white">
             <p>
                 <span class="w3-tag w3-black w3-margin-bottom">#강예찬</span>
-                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">#훈남</span>
-                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">#존잘</span>
-                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">#매력있어</span>
+                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">#게임</span>
+                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">#웹</span>
+                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">#앱</span>
+                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">#고수가_되고싶습니다</span>
             </p>
         </div>
     </div><!-- Tag 창 -->
